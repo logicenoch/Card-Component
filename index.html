@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Order summary card</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 12px;
+      }
+      :root {
+        --Paleblue: hsl(225, 100%, 94%);
+        --Brightblue: hsl(245, 75%, 52%);
+        --Verypaleblue: hsl(225, 100%, 98%);
+        --Desaturatedblue: hsl(224, 23%, 55%);
+        --Darkblue: hsl(223, 47%, 23%);
+        --bdRaduisSize: 15px;
+      }
+      .main-container {
+        background-image: url(images/pattern-background-mobile.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 90%;
+        height: 63%;
+        border-radius: var(--bdRaduisSize);
+        box-shadow: 0 8px 8px 5px rgba(0, 0, 0, 0.1);
+      }
+      .image-container {
+        background-color: white;
+        border-top-right-radius: var(--bdRaduisSize);
+        border-top-left-radius: var(--bdRaduisSize);
+      }
+      .image-container img {
+        border-top-right-radius: var(--bdRaduisSize);
+        border-top-left-radius: var(--bdRaduisSize);
+        width: 100%;
+        object-fit: contain;
+        flex: 1;
+      }
+      .card-content-container {
+        background-color: white;
+        height: 100%;
+        border-bottom-left-radius: var(--bdRaduisSize);
+        border-bottom-right-radius: var(--bdRaduisSize);
+      }
+      .text-container {
+        text-align: center;
+        height: 40%;
+      }
+
+      .text-container h2 {
+        text-align: center;
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 900;
+        font-size: 7vw;
+        padding: 20px;
+        color: var(--Darkblue);
+      }
+
+      .text-container p {
+        width: 80%;
+        text-align: center;
+        margin-left: 10%;
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 500;
+        font-size: 4vw;
+        color: var(--Desaturatedblue);
+      }
+
+      .pay-music-conainer {
+        display: flex;
+        background-color: var(--Verypaleblue);
+        justify-content: flex-start;
+        align-content: center;
+        flex-wrap: nowrap;
+        margin: 0 15px;
+        border-radius: var(--bdRaduisSize);
+      }
+
+      .change {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-grow: 20;
+        font-family: "Red Hat Display", sans-serif;
+        font-size: 2.3vw;
+        width: 20%;
+      }
+
+      .price-music {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        flex-grow: 10;
+        width: 40%;
+      }
+
+      .music-icon-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 15%;
+        margin-left: 7vw;
+      }
+
+      .music-icon-container img {
+        justify-content: end;
+      }
+
+      .price-music h3 {
+        font-family: "Red Hat Display", sans-serif;
+        color: var(--Darkblue);
+        font-size: 4vw;
+        word-spacing: -3px;
+      }
+
+      .price-music p {
+        font-family: "Red Hat Display", sans-serif;
+        font-weight: 500;
+        color: var(--Desaturatedblue);
+        font-size: 3vw;
+      }
+      .change,
+      .pay-music-container img,
+      .price-music {
+        padding: 20px;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: 14px 15px;
+        padding: 3px 0;
+      }
+
+      .btn-container button {
+        width: 100%;
+        border: none;
+        background-color: var(--Brightblue);
+        font-family: "Red Hat Display", sans-serif;
+        font-size: 1em;
+        color: white;
+        padding: 12px;
+        border-radius: var(--bdRaduisSize);
+        font-weight: 600;
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .cancel-link {
+        text-align: center;
+      }
+
+      .cancel-link a {
+        font-family: "Red Hat Display", sans-serif;
+        text-decoration: none;
+        color: var(--Desaturatedblue);
+        font-weight: 900;
+        font-size: 3.5vw;
+      }
+
+      .change a:hover {
+        text-decoration: none;
+        color: var(--Brightblue);
+        transition: color 1s ease;
+      }
+
+      .btn-container button:hover {
+        opacity: 0.7;
+        transition: all 0.2s ease-in;
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+      }
+
+      .cancel-link a:hover {
+        color: var(--Darkblue);
+        transition: all 0.4s ease;
+      }
+
+      @media screen and (min-width: 429px) {
+        .main-container {
+          background-image: url(images/pattern-background-desktop.svg);
+          background-repeat: repeat;
+          background-size: cover;
+          background-attachment: fixed;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .card-container {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          width: 400px;
+          height: 600px;
+          border-radius: 10px;
+        }
+
+        .card-content-container {
+          background-color: white;
+          height: 80%;
+          border-bottom-left-radius: var(--bdRaduisSize);
+          border-bottom-right-radius: var(--bdRaduisSize);
+        }
+
+        .text-container {
+          text-align: center;
+          height: 40%;
+        }
+
+        .text-container h2 {
+          text-align: center;
+          font-family: "Red Hat Display", sans-serif;
+          font-weight: 900;
+          font-size: 30px;
+          padding: 20px;
+          color: var(--Darkblue);
+        }
+
+        .text-container p {
+          width: 80%;
+          text-align: center;
+          margin-left: 10%;
+          font-family: "Red Hat Display", sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          color: var(--Desaturatedblue);
+        }
+        .pay-music-conainer {
+          display: flex;
+          background-color: var(--Verypaleblue);
+          justify-content: flex-start;
+          align-content: center;
+          flex-wrap: nowrap;
+          margin: 0 15px;
+          border-radius: var(--bdRaduisSize);
+        }
+
+        .change {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-grow: 20;
+          font-family: "Red Hat Display", sans-serif;
+          font-size: 1vw;
+          width: 20%;
+        }
+
+        .price-music {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          text-align: center;
+          flex-grow: 10;
+          width: 40%;
+        }
+
+        .music-icon-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 15%;
+          margin-left:20px;
+        }
+
+        .price-music h3 {
+          font-family: "Red Hat Display", sans-serif;
+          color: var(--Darkblue);
+          font-size: 20px;
+          word-spacing: -3px;
+        }
+
+        .price-music p {
+          font-family: "Red Hat Display", sans-serif;
+          font-weight: 500;
+          color: var(--Desaturatedblue);
+          font-size: 13px;
+        }
+        .change,
+        .pay-music-container img,
+        .price-music {
+          padding: 20px;
+        }
+        .btn-container {
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          margin: 14px 15px;
+          padding: 3px 0;
+        }
+
+        .btn-container button {
+          width: 100%;
+          border: none;
+          background-color: var(--Brightblue);
+          font-family: "Red Hat Display", sans-serif;
+          font-size: 15px;
+          color: white;
+          padding: 12px;
+          border-radius: var(--bdRaduisSize);
+          font-weight: 600;
+          box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .cancel-link {
+          text-align: center;
+        }
+
+        .cancel-link a {
+          font-family: "Red Hat Display", sans-serif;
+          text-decoration: none;
+          color: var(--Desaturatedblue);
+          font-weight: 900;
+          font-size: 17px;
+        }
+
+        .change a:hover {
+          text-decoration: none;
+          color: var(--Brightblue);
+          transition: color 1s ease;
+        }
+
+        .btn-container button:hover {
+          opacity: 0.7;
+          transition: all 0.2s ease-in;
+          box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .cancel-link a:hover {
+          color: var(--Darkblue);
+          transition: all 0.4s ease;
+        }
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="card-container">
+        <div class="image-container">
+          <img src="images/illustration-hero.svg" alt="image" />
+        </div>
+        <div class="card-content-container">
+          <div class="text-container">
+            <h2>Order Summary</h2>
+            <p>
+              You can now listen to millions of songs, audiobooks, and podcasts
+              on any device anywhere you like!
+            </p>
+          </div>
+          <div class="pay-music-conainer">
+            <div class="music-icon-container">
+              <img src="images/icon-music.svg" alt="" />
+            </div>
+
+            <div class="price-music">
+              <h3>Annual Plan</h3>
+              <p>$59.99/year</p>
+            </div>
+            <div class="change">
+              <p><a href="#change">Change</a></p>
+            </div>
+          </div>
+          <div class="btn-container">
+            <button>Proceed to Payment</button>
+          </div>
+          <div class="cancel-link">
+            <a href="#cancel">Cancel Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Okeke Enoch Chibuzo</a>.
+    </div>
+  </body>
+</html>
